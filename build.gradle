@@ -10,12 +10,16 @@ repositories {
 }
 
 dependencies {
-    implementation fileTree('E:/Groovy/groovy-2.4.10/lib') {
+//    implementation fileTree('E:/Groovy/groovy-2.4.10/lib') {
+//    implementation fileTree('E:/Groovy/groovy-2.5.6/lib') {
+    implementation fileTree('E:/Groovy/groovy-4.0.9/lib') {
         include '*.jar'
         include '*/*.jar'
     }
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation fileTree(dir:'lib',includes:['*jar'])
+//    implementation"mysql:mysql-connector-java:5.1.14"
 }
 
 test {
