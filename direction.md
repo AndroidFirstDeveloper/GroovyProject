@@ -28,3 +28,36 @@ git remote add origin 你的远程库地址  // 把本地库与远程库关联
 git push -u origin master    // 第一次推送时
 git push origin master  // 第一次推送后，直接使用该命令即可推送修改
 
+mysql数据库命令：
+net start mysql
+net stop mysql
+bin>mysql -uroot -p //启动mysql后，输入命令，命令行会提示用户输入密码
+mysql>update user set authentication_string=password(“123456”) where user=“root”; //修改数据库密码
+mysql>use mysql //进入数据库管理系统
+mysql>exit  //退出登录
+mysql>quit; //退出登录
+mysql> create database db_test default character set utf8 collate utf8_general_ci; //新建一个数据库，名字是db_test，并设置编码格式，防止乱码
+mysql>show databases; //显示所有数据库
+//------------------------------------------使用数据库
+mysql> use db_test;
+Database changed
+mysql>
+mysql> source D:\Dev_Env\Mysql 5.7.35\run_sql\ry.sql    // source命令，后面接sql文件路径
+//-------------------------------------------使用数据库
+假如忘记了密码，重置密码步骤:
+1、以管理员身份打开cmd窗口。
+2、在上述窗口停止MySql服务运行：net stop mysql
+3、重置密码，执行一下命令：mysqld --defaults-file="D:\Dev_Env\Mysql 5.7.35\mysql-5.7.35-winx64\mysql-5.7.35-winx64\my.ini" --skip-grant-tables
+或者打开my.ini文件，在任意位置添加：skip-grant-tables
+4、以管理员身份，新开一个cmd窗口， 执行登录命令(在新的一行提示输入密码，直接回车就行)：mysql -uroot -p
+5、重新设置密码：mysql> update mysql.user set authentication_string=password("123456") where user='root';
+
+
+groovy gradle项目添加jar文件步骤：
+创建一个lib文件夹（跟src同级目录，已有的话不创建），将jar文件复制到lib文件夹下，
+右键jar文件选择add external library，
+在项目根目录下的build.gradle文件中添加：implementation fileTree(dir:'lib',includes:['*jar']) //不添加的话，还是用不了jar文件里的类,比如会报错：Caught: java.lang.ClassNotFoundException: com.mysql.cj.jdbc.Driver
+有时还会报错，需要把代码文件移动到代码根目录（比如src/main/groovy），还要去掉class类名的包裹（比如class A{static void main(args){xxxxxx}}），必须要移动位置+去掉外部class包裹，少一个都不行（亲自试验过） //不这样做有时报错：Exception in thread "main" groovy.lang.GroovyRuntimeException: DataSet unable to evaluate expression. AST not available for closure: chapter9.MysqlTest$_main_closure5. Is the source code on the classpath?
+
+mysql-connector-java.jar下载地址：https://groovy.apache.org/download.html#distro ，打开网页，点击Groovy's artifactory instance (includes pre-ASF versions)
+poi下载地址：https://repo1.maven.org/maven2/org/apache/poi/ ，打开网页，点击poi
