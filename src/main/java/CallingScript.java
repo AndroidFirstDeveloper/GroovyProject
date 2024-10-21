@@ -2,6 +2,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
+//java里面调用groovy的测试例子
 public class CallingScript {
 
     public static void main(String[] args) {
