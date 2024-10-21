@@ -1,5 +1,6 @@
 package chapter8
 
+//操作xml文件（创建、读写、编辑等）
 class TestXml {
 
     public static void main(args) {
@@ -49,7 +50,7 @@ class TestXml {
 
     def static useXmlSlurperNs() {
         println("")
-        def languages = new groovy.xml.XmlSlurper().parse("E:\\gworkspace\\GroovyProject\\src\\main\\groovy\\chapter8\\computerAndNaturalLanguages.xml").declareNamespace(human: 'Natural')
+        def languages = new XmlSlurper().parse("E:\\gworkspace\\GroovyProject\\src\\main\\groovy\\chapter8\\computerAndNaturalLanguages.xml").declareNamespace(human: 'Natural')
         println("Languages:")
         println("${languages.language.collect { it.@name }.join(', ')}")
         println("Natural Languages")
@@ -58,7 +59,7 @@ class TestXml {
 
     def static useXmlSlurper() {
         println("")
-        def languages = new groovy.xml.XmlSlurper().parse("E:\\gworkspace\\GroovyProject\\src\\main\\groovy\\chapter8\\languages.xml")
+        def languages = new XmlSlurper().parse("E:\\gworkspace\\GroovyProject\\src\\main\\groovy\\chapter8\\languages.xml")
         println("Languages and authors")
         languages.language.each {
             println("${it.@name} authored by ${it.author[0].text()}")
@@ -76,7 +77,7 @@ class TestXml {
 
     def static useXmlParser() {
         println("")
-        def languages = new groovy.xml.XmlParser().parse("E:\\gworkspace\\GroovyProject\\src\\main\\groovy\\chapter8\\languages.xml")
+        def languages = new XmlParser().parse("E:\\gworkspace\\GroovyProject\\src\\main\\groovy\\chapter8\\languages.xml")
         println("Languages and authors")
         languages.each {
             println("${it.@name} authored by ${it.author[0].text()}")
