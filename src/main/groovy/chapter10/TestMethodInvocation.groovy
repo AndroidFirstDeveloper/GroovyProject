@@ -3,7 +3,7 @@ package chapter10
 //继承GroovyTestCase类，是为了使用它的一些方法，比如assertEquals、shouldFail
 //测试使用metaClass注入新的方法，调用不存在的方法会走基类的拦截方法
 class TestMethodInvocation extends GroovyTestCase {
-    static def main(args) {
+    public static void main(args) {
         System.out.println("TestMethodInvocation main")
         def instance = new TestMethodInvocation()
         instance.testInterceptedMethodCallonPOJO()
